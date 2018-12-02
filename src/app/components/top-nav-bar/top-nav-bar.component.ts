@@ -11,10 +11,12 @@ import { LanguageService } from '../../services/language.service';
 export class TopNavBarComponent implements OnInit {
   topNavbarTexts: object;
   defaultDate: string;
+  isNavbarCollapsed: boolean;
 
   constructor(private languageService: LanguageService) {
     this.topNavbarTexts = {};
     this.defaultDate = moment().format('YYYY-MM-DD');
+    this.isNavbarCollapsed = true;
   }
 
   ngOnInit() {

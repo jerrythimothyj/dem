@@ -22,7 +22,12 @@
   </button>
 
   <!-- Navbar links -->
-  <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="collapsibleNavbar">
+  <div
+    [ngbCollapse]="isNavbarCollapsed"
+    class="collapse navbar-collapse"
+    id="collapsibleNavbar"
+    (click)="isNavbarCollapsed = true"
+  >
     <ul class="navbar-nav">
       <li class="nav-item">
         <a
