@@ -1,0 +1,67 @@
+@import "../../constants/variables.scss";
+
+.navbar {
+  line-height: 1;
+  padding: 0 1rem;
+
+  .navbar-brand {
+    img {
+      width: 30px;
+    }
+  }
+
+  &.bg-dark {
+    background-color: $color-white !important;
+  }
+
+  .navbar-toggler {
+    background: $color-light-gray;
+    padding: 0.25rem;
+
+    .navbar-toggler-icon {
+      color: $color-red;
+      width: 1em;
+      height: 1em;
+    }
+  }
+
+  .nav-link {
+    font-size: 20px;
+    padding: 0.7rem 1rem;
+
+    &:focus,
+    &:hover {
+      background-color: $color-white;
+      color: $color-black;
+      animation: shake 0.5s;
+    }
+
+    .fa-chart-pie {
+      color: $color-red;
+    }
+
+    .fa-file-invoice {
+      color: $color-blue;
+    }
+
+    .fa-file-alt {
+      color: $color-yellow;
+    }
+
+    .fa-chart-line {
+      color: $color-pink;
+    }
+
+    .fa-search {
+      color: $color-violet;
+    }
+
+    .fa-cog {
+      color: $color-light-blue;
+    }
+
+    .fa-sign-out-alt {
+      color: $color-orange;
+    }
+  }
+}
