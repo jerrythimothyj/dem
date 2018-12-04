@@ -7,3 +7,20 @@ html,
 body {
   background-color: $color-light-gray !important;
 }
+
+.o-a {
+  overflow: auto
+}
+
+.toolTip {
+  color: $color-white;
+  font-size: 10px;
+  font-weight: bold;
+  position: absolute;
+  display: none;
+  height: auto;
+  background: $color-black;
+  border-radius: 3px;
+  padding: 3px 7px;
+  text-align: center;
+}
