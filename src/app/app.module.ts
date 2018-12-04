@@ -19,6 +19,7 @@ import { ForgotPasswordComponent } from './containers/forgot-password/forgot-pas
 import { LoginComponent } from './containers/login/login.component';
 import { SearchComponent } from './containers/search/search.component';
 import { GroupedBarChartComponent } from './components/graphs/grouped-bar-chart/grouped-bar-chart.component';
+import { LineChartComponent } from './components/graphs/line-chart/line-chart.component';
 
 const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -47,7 +48,8 @@ const appRoutes: Routes = [
     ForgotPasswordComponent,
     LoginComponent,
     SearchComponent,
-    GroupedBarChartComponent
+    GroupedBarChartComponent,
+    LineChartComponent
   ],
   imports: [
     RouterModule.forRoot(
