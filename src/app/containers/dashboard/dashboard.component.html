@@ -1,10 +1,28 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-9 o-a">
-      <grouped-bar-chart></grouped-bar-chart>
+  <div class="row m-1 mt-5">
+    <div class="col-md-4">
+      <dashboard-summary-card
+        [title]="dashboardTexts.dashboardYearly"
+        [values]="dashboardYearlySummary"
+        *ngIf="dashboardYearlySummary"
+      >
+      </dashboard-summary-card>
     </div>
-    <div class="col-md-3 o-a">
-      <line-chart></line-chart>
+    <div class="col-md-4">
+      <dashboard-summary-card
+        [title]="dashboardTexts.dashboardMonthly"
+        [values]="dashboardMonthlySummary"
+        *ngIf="dashboardMonthlySummary"
+      >
+      </dashboard-summary-card>
+    </div>
+    <div class="col-md-4">
+      <dashboard-summary-card
+        [title]="dashboardTexts.dashboardDaily"
+        [values]="dashboardDailySummary"
+        *ngIf="dashboardDailySummary"
+      >
+      </dashboard-summary-card>
     </div>
   </div>
 </div>

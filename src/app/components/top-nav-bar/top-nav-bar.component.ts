@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 
 import { LanguageService } from '../../services/language.service';
+import {DATE_FORMAT} from '../../constants/global';
 
 @Component({
   selector: 'top-nav-bar',
@@ -15,7 +16,7 @@ export class TopNavBarComponent implements OnInit {
 
   constructor(private languageService: LanguageService) {
     this.topNavbarTexts = {};
-    this.defaultDate = moment().format('YYYY-MM-DD');
+    this.defaultDate = moment().format(DATE_FORMAT);
     this.isNavbarCollapsed = true;
   }
 

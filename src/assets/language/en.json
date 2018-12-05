@@ -6,5 +6,9 @@
   "navbarComparison": "Comparison",
   "navbarSearch": "Search",
   "navbarSettings": "Settings",
-  "navbarLogout": "Logout"
+  "navbarLogout": "Logout",
+
+  "dashboardYearly": "Yearly",
+  "dashboardMonthly": "Monthly",
+  "dashboardDaily": "Daily"
 }
