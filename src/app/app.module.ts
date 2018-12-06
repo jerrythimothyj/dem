@@ -67,6 +67,6 @@ const appRoutes: Routes = [
 })
 export class AppModule {
   constructor(private languageService: LanguageService) {
-    languageService.getLangTexts();
+    languageService.fetchLangTexts();
   }
 }
