@@ -7,6 +7,8 @@
         *ngIf="dashboardYearlySummary"
       >
       </dashboard-summary-card>
+      <div id="dashboard-yearly-bubble"></div>
+      <bubble-chart *ngIf="dashboardYearlyBubble" [selector]="'#dashboard-yearly-bubble'" [data]="dashboardYearlyBubble"></bubble-chart>
     </div>
     <div class="col-md-4">
       <dashboard-summary-card
@@ -15,6 +17,8 @@
         *ngIf="dashboardMonthlySummary"
       >
       </dashboard-summary-card>
+      <div id="dashboard-monthly-bubble"></div>
+      <bubble-chart *ngIf="dashboardMonthlyBubble" [selector]="'#dashboard-monthly-bubble'" [data]="dashboardMonthlyBubble"></bubble-chart>
     </div>
     <div class="col-md-4">
       <dashboard-summary-card
@@ -23,6 +27,8 @@
         *ngIf="dashboardDailySummary"
       >
       </dashboard-summary-card>
+      <div id="dashboard-daily-bubble"></div>
+      <bubble-chart *ngIf="dashboardDailyBubble" [selector]="'#dashboard-daily-bubble'" [data]="dashboardDailyBubble"></bubble-chart>
     </div>
   </div>
 </div>

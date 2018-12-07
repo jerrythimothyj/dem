@@ -13,6 +13,9 @@ export class DashboardComponent implements OnInit {
   dashboardYearlySummary: object;
   dashboardMonthlySummary: object;
   dashboardDailySummary: object;
+  dashboardYearlyBubble: any;
+  dashboardMonthlyBubble: any;
+  dashboardDailyBubble: any;
   dashboardTexts: object;
 
   constructor(
@@ -29,17 +32,32 @@ export class DashboardComponent implements OnInit {
       .fetchDashboardYearData(this.route.snapshot.queryParamMap.get('date'))
       .subscribe(data => {
         this.dashboardYearlySummary = this.dashboardService.getYearlySummary(
-          [],
+          data.response,
+          currentDate
+        );
+
+        this.dashboardYearlyBubble = this.dashboardService.getYearlyBubble(
+          data.response,
           currentDate
         );
 
         this.dashboardMonthlySummary = this.dashboardService.getMonthlySummary(
-          [],
+          data.response,
+          currentDate
+        );
+
+        this.dashboardMonthlyBubble = this.dashboardService.getMonthlyBubble(
+          data.response,
           currentDate
         );
 
         this.dashboardDailySummary = this.dashboardService.getDailySummary(
-          [],
+          data.response,
+          currentDate
+        );
+
+        this.dashboardDailyBubble = this.dashboardService.getDailyBubble(
+          data.response,
           currentDate
         );
       });

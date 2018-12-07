@@ -1,0 +1,5 @@
+[
+  { "expense_type": "a", "color": "#ff0000" },
+  { "expense_type": "b", "color": "#00ff00" },
+  { "expense_type": "c", "color": "#0000ff" }
+]

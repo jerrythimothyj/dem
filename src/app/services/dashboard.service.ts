@@ -10,6 +10,7 @@ import {
 } from '../constants/global';
 import { APIService } from './api.service';
 import { MathService } from './math.service';
+import { ColorsService } from './colors.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ export class DashboardService {
 
   constructor(
     private apiService: APIService,
-    private mathService: MathService
+    private mathService: MathService,
+    private colorsService: ColorsService
   ) {
     this.defaultDate = moment().format(DATE_FORMAT);
   }
@@ -137,5 +139,69 @@ export class DashboardService {
       currentSpendings,
       currentRemainings
     };
+  }
+
+  getCurrentBubble(filter, data) {
+    const currentBubbleRecords = [];
+
+    R.pipe(
+      R.filter(filter),
+      R.reduceBy(
+        (init, row) => {
+          const amount =
+            row.spending_type === SPENDINGS_TYPE_EARNINGS
+              ? R.negate(row.amount)
+              : row.amount;
+          return init + amount;
+        },
+        0,
+        R.prop('expense_type')
+      ),
+      R.forEachObjIndexed((value, key) => {
+        if (value > 0) {
+          currentBubbleRecords.push({
+            name: key,
+            value: this.mathService.roundTo2Decimals(value),
+            color: R.pipe(
+              R.find(R.propEq('expense_type', key)),
+              R.prop('color')
+            )(this.colorsService.expenseColors)
+          });
+        }
+      })
+    )(data);
+
+    return currentBubbleRecords;
+  }
+
+  getYearlyBubble(data, date) {
+    const currentYear = moment(date, DATE_FORMAT).year();
+
+    const getCurrentYearFilter = row => row.date_yyyy === currentYear;
+
+    return this.getCurrentBubble(getCurrentYearFilter, data);
+  }
+
+  getMonthlyBubble(data, date) {
+    const currentYear = moment(date, DATE_FORMAT).year();
+    const currentMonth = moment(date, DATE_FORMAT).month();
+
+    const getCurrentMonthFilter = row =>
+      row.date_yyyy === currentYear && row.date_mm === currentMonth;
+
+    return this.getCurrentBubble(getCurrentMonthFilter, data);
+  }
+
+  getDailyBubble(data, date) {
+    const currentYear = moment(date, DATE_FORMAT).year();
+    const currentMonth = moment(date, DATE_FORMAT).month();
+    const currentDay = moment(date, DATE_FORMAT).day();
+
+    const getCurrentDayFilter = row =>
+      row.date_yyyy === currentYear &&
+      row.date_mm === currentMonth &&
+      row.date_dd === currentDay;
+
+    return this.getCurrentBubble(getCurrentDayFilter, data);
   }
 }

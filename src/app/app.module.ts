@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopNavBarComponent } from './components/top-nav-bar/top-nav-bar.component';
 import { LanguageService } from './services/language.service';
+import { ColorsService } from './services/colors.service';
 import { DashboardComponent } from './containers/dashboard/dashboard.component';
 import { ExpensesComponent } from './containers/expenses/expenses.component';
 import { BudgetComponent } from './containers/budget/budget.component';
@@ -21,6 +22,7 @@ import { SearchComponent } from './containers/search/search.component';
 import { GroupedBarChartComponent } from './components/graphs/grouped-bar-chart/grouped-bar-chart.component';
 import { LineChartComponent } from './components/graphs/line-chart/line-chart.component';
 import { DashboardSummaryCardComponent } from './components/dashboard-summary-card/dashboard-summary-card.component';
+import { BubbleChartComponent } from './components/graphs/bubble-chart/bubble-chart.component';
 
 const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -51,13 +53,11 @@ const appRoutes: Routes = [
     SearchComponent,
     GroupedBarChartComponent,
     LineChartComponent,
-    DashboardSummaryCardComponent
+    DashboardSummaryCardComponent,
+    BubbleChartComponent
   ],
   imports: [
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
-    ),
+    RouterModule.forRoot(appRoutes, {}),
     NgbModule,
     BrowserModule,
     AppRoutingModule
@@ -66,7 +66,11 @@ const appRoutes: Routes = [
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(private languageService: LanguageService) {
+  constructor(
+    private languageService: LanguageService,
+    private colorsService: ColorsService
+  ) {
     languageService.fetchLangTexts();
+    colorsService.fetchAllColors();
   }
 }
