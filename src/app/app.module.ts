@@ -23,6 +23,8 @@ import { GroupedBarChartComponent } from './components/graphs/grouped-bar-chart/
 import { LineChartComponent } from './components/graphs/line-chart/line-chart.component';
 import { DashboardSummaryCardComponent } from './components/dashboard-summary-card/dashboard-summary-card.component';
 import { BubbleChartComponent } from './components/graphs/bubble-chart/bubble-chart.component';
+import { BarChartComponent } from './components/graphs/bar-chart/bar-chart.component';
+import { HorizontalBarChartComponent } from './components/graphs/horizontal-bar-chart/horizontal-bar-chart.component';
 
 const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -54,7 +56,9 @@ const appRoutes: Routes = [
     GroupedBarChartComponent,
     LineChartComponent,
     DashboardSummaryCardComponent,
-    BubbleChartComponent
+    BubbleChartComponent,
+    BarChartComponent,
+    HorizontalBarChartComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes, {}),

@@ -21,7 +21,6 @@ export class BubbleChartComponent implements OnInit {
         };
 
         const diameter = document.querySelector(this.selector).clientWidth;
-        const color = d3.scaleOrdinal(d3.schemeCategory20);
 
         const bubble = d3
           .pack(dataset)
